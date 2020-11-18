@@ -13,7 +13,7 @@ jobs:
      #    git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/master
    - name: Build Fuzzers
      id: build
-     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@master
+     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-external-build
      with:
        project-src-path: '/home/runner/work/cifuzz-external-example/cifuzz-external-example'
        build-integration-path: '/home/runner/work/cifuzz-external-example/cifuzz-external-example/oss-fuzz'
@@ -21,7 +21,7 @@ jobs:
        dry-run: false
    - name: Run Fuzzers
      id: run
-     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@master
+     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-external-build
      with:
        oss-fuzz-project-name: 'external-project'
        fuzz-seconds: 600
