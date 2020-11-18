@@ -16,8 +16,8 @@ jobs:
      id: build
      uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-external-build
      with:
-       project-src-path: '/home/runner/work/cifuzz-external-example/cifuzz-external-example'
-       build-integration-path: '/home/runner/work/cifuzz-external-example/cifuzz-external-example/oss-fuzz'
+       project-src-path: 'cifuzz-external-example/cifuzz-external-example'
+       build-integration-path: 'cifuzz-external-example/oss-fuzz'
        oss-fuzz-project-name: 'cifuzz-external-example'
        dry-run: false
    - name: Run Fuzzers
