@@ -14,7 +14,6 @@ jobs:
      id: build
      uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@master
      with:
-       - uses: actions/checkout@v2
        oss-fuzz-project-name: 'external-project'
        dry-run: false
    - name: Run Fuzzers
