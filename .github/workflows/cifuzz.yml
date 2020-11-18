@@ -4,12 +4,12 @@ jobs:
  Fuzzing:
    runs-on: ubuntu-latest
    steps:
-   # - name: Checkout source
-   #   uses: actions/checkout@v2
-   #   # !!! Needed?
-   #   # run: |  # Needed for git diff to work.
-   #   #    git fetch origin master --unshallow
-   #   #    git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/master
+   - name: Checkout source
+     uses: actions/checkout@v2
+     # !!! Needed?
+     run: |  # Needed for git diff to work.
+        git fetch origin master --unshallow
+        git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/master
    - name: Build Fuzzers
      id: build
      uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@master
