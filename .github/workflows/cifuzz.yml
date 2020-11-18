@@ -12,14 +12,14 @@ jobs:
    #   #    git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/master
    - name: Build Fuzzers
      id: build
-     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-external-build
+     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@master
      with:
        - uses: actions/checkout@v2
        oss-fuzz-project-name: 'external-project'
        dry-run: false
    - name: Run Fuzzers
      id: run
-     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-external-build
+     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@master
      with:
        oss-fuzz-project-name: 'external-project'
        fuzz-seconds: 600
