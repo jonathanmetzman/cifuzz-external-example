@@ -7,7 +7,8 @@ jobs:
    - name: Checkout source
      uses: actions/checkout@v2
      id: checkout
-     # tmp32
+     path: 'cifuzz-external-example'
+     # tmp33
      # !!! Needed?
      # run: |  # Needed for git diff to work.
      #    git fetch origin master --unshallow
@@ -16,7 +17,7 @@ jobs:
      id: build
      uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-external-build
      with:
-       project-src-path: '.'
+       project-src-path: 'cifuzz-external-example'
        build-integration-path: 'fuzzer-build-integration'
        oss-fuzz-project-name: 'cifuzz-external-example'
        dry-run: false
