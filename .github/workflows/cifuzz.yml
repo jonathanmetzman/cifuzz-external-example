@@ -11,7 +11,7 @@ jobs:
        path: cifuzz-external-example
    - name: Build Fuzzers
      id: build
-     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@debuggable-cifuzz
+     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-external-build
      with:
        project-src-path: 'cifuzz-external-example'
        build-integration-path: 'fuzzer-build-integration'
@@ -19,7 +19,7 @@ jobs:
        dry-run: false
    - name: Run Fuzzers
      id: run
-     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@debuggable-cifuzz
+     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-external-build
      with:
        oss-fuzz-project-name: 'external-project'
        fuzz-seconds: 600
