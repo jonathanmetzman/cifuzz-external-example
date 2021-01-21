@@ -1,9 +1,17 @@
 name: CIFuzz
-on: [pull_request]
+on:
+  pull_request:
+    paths:
+      - '**'
+  push:
+    branches:
+      - master
 jobs:
  Fuzzing:
    runs-on: ubuntu-latest
    steps:
+    - name: echo env vars
+     run: echo "GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_BASE_REF $GITHUB_BASE_REF GITHUB_REF $GITHUB_REF GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_ACTION_REF $GITHUB_ACTION_REF GITHUB_SHA $GITHUB_SHA"
    - name: Checkout source
      uses: actions/checkout@v2
      id: checkout
@@ -11,7 +19,7 @@ jobs:
        path: cifuzz-external-example
    - name: Build Fuzzers
      id: build
-     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-cov
+     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-diff
      with:
        project-src-path: 'cifuzz-external-example'
        build-integration-path: 'fuzzer-build-integration'
@@ -19,7 +27,7 @@ jobs:
        dry-run: false
    - name: Run Fuzzers
      id: run
-     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-cov
+     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-diff
      with:
        oss-fuzz-project-name: 'external-project'
        fuzz-seconds: 600
