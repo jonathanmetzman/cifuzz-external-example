@@ -39,11 +39,6 @@ jobs:
    steps:
    - name: echo env vars
      run: echo "GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_BASE_REF $GITHUB_BASE_REF GITHUB_REF $GITHUB_REF GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_ACTION_REF $GITHUB_ACTION_REF GITHUB_SHA $GITHUB_SHA"
-   - name: Checkout source
-     uses: actions/checkout@v2
-     id: checkout
-     with:
-       path: cifuzz-external-example
    - name: Build Fuzzers
      id: build
      uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-batch
