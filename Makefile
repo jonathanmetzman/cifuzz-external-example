@@ -46,8 +46,8 @@ do_stuff_fuzzer: do_stuff_fuzzer.cpp my_api.a standalone_fuzz_target_runner.o
 	${CXX} ${CXXFLAGS} $< my_api.a ${LIB_FUZZING_ENGINE} -o $@
 	zip -q -r do_stuff_fuzzer_seed_corpus.zip do_stuff_test_data
 
-abort_fuzzer: abort_fuzzer.cpp standalone_fuzz_target_runner.o
-	${CXX} ${CXXFLAGS} abort_fuzzer.cpp standalone_fuzz_target_runner.o -o abort_fuzzer
+abort_fuzzer: abort_fuzzer.cpp standalone_fuzz_target_runner.o my_api.a
+	${CXX} ${CXXFLAGS} ${LIB_FUZZING_ENGINE} abort_fuzzer.cpp my_api.a -o abort_fuzzer
 	zip -q -r abort_fuzzer_corpus.zip do_stuff_test_data
 
 # The library itself.
