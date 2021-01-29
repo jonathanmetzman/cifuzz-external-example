@@ -40,7 +40,6 @@ jobs:
        path: ./out/artifacts
 
 
-jobs:
  BatchFuzzing:
    runs-on: ubuntu-latest
    steps:
