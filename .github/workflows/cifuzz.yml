@@ -39,13 +39,13 @@ jobs:
    steps:
    - name: echo env vars
      run: echo "GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_BASE_REF $GITHUB_BASE_REF GITHUB_REF $GITHUB_REF GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_ACTION_REF $GITHUB_ACTION_REF GITHUB_SHA $GITHUB_SHA"
-   # - name: Build Fuzzers
-   #   id: build
-   #   uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-artifacts
-   #   with:
-   #     build-integration-path: 'fuzzer-build-integration'
-   #     oss-fuzz-project-name: 'cifuzz-external-example'
-   #     dry-run: false
+   - name: Build Fuzzers
+     id: build
+     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-artifacts
+     with:
+       build-integration-path: 'fuzzer-build-integration'
+       oss-fuzz-project-name: 'cifuzz-external-example'
+       dry-run: false
    - name: Run Fuzzers
      id: run
      uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-artifacts
