@@ -38,6 +38,7 @@ jobs:
    - name: Download workflow artifact
      uses: dawidd6/action-download-artifact@v2.11.1
      with:
+       github_token: ${{secrets.GITHUB_TOKEN}}
        run_id: 610783218
        workflow: cifuzz.yml
        path: /tmp/old-artifact
