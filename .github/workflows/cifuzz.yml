@@ -58,7 +58,7 @@ jobs:
        oss-fuzz-project-name: 'cifuzz-external-example'
        build-integration-path: 'fuzzer-build-integration'
        fuzz-seconds: 600
-       github_token: ${{ secrets.GITHUB_TOKEN }}
+       github-token: ${{ secrets.GITHUB_TOKEN }}
        run-fuzzers-mode: 'batch'
    - name: Upload Crash
      uses: actions/upload-artifact@v1
