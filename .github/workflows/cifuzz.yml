@@ -20,15 +20,16 @@ jobs:
      id: build
      uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@master
      with:
-       allowed_broken_targets_percentage: 100
-       oss-fuzz-project-name: 'cifuzz-example'
+       project-src-path: 'cifuzz-external-example'
+       build-integration-path: 'fuzzer-build-integration'
+       oss-fuzz-project-name: 'cifuzz-external-example'
        dry-run: false
        sanitizer: ${{ matrix.sanitizer }}
    - name: Run Fuzzers (${{ matrix.sanitizer }})
      id: run
      uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@master
      with:
-       oss-fuzz-project-name: 'cifuzz-example'
+       oss-fuzz-project-name: 'cifuzz-external-example'
        fuzz-seconds: 600
        dry-run: false
        sanitizer: ${{ matrix.sanitizer }}
