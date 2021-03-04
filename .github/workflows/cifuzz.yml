@@ -9,29 +9,29 @@ on:
 jobs:
  Fuzzing:
    runs-on: ubuntu-latest
+   strategy:
+     fail-fast: false
+     matrix:
+       sanitizer: [address, undefined, memory, thread]
    steps:
    - name: echo env vars
      run: echo "GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_BASE_REF $GITHUB_BASE_REF GITHUB_REF $GITHUB_REF GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_ACTION_REF $GITHUB_ACTION_REF GITHUB_SHA $GITHUB_SHA"
-   - name: Checkout source
-     uses: actions/checkout@v2
-     id: checkout
-     with:
-       path: cifuzz-external-example
-   - name: Build Fuzzers
+   - name: Build Fuzzers (${{ matrix.sanitizer }})
      id: build
-     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@ssh_url
+     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@master
      with:
-       project-src-path: 'cifuzz-external-example'
-       build-integration-path: 'fuzzer-build-integration'
-       oss-fuzz-project-name: 'cifuzz-external-example'
+       allowed_broken_targets_percentage: 100
+       oss-fuzz-project-name: 'cifuzz-example'
        dry-run: false
-   - name: Run Fuzzers
+       sanitizer: ${{ matrix.sanitizer }}
+   - name: Run Fuzzers (${{ matrix.sanitizer }})
      id: run
-     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@ssh_url
+     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@master
      with:
-       oss-fuzz-project-name: 'external-project'
+       oss-fuzz-project-name: 'cifuzz-example'
        fuzz-seconds: 600
        dry-run: false
+       sanitizer: ${{ matrix.sanitizer }}
    - name: Upload Crash
      uses: actions/upload-artifact@v1
      if: failure() && steps.build.outcome == 'success'
