@@ -22,7 +22,6 @@ jobs:
      with:
        build-integration-path: 'fuzzer-build-integration'
        oss-fuzz-project-name: 'cifuzz-external-example'
-       dry-run: false
        sanitizer: ${{ matrix.sanitizer }}
    - name: Run Fuzzers (${{ matrix.sanitizer }})
      id: run
@@ -30,7 +29,6 @@ jobs:
      with:
        oss-fuzz-project-name: 'cifuzz-external-example'
        fuzz-seconds: 600
-       dry-run: false
        sanitizer: ${{ matrix.sanitizer }}
    - name: Upload Crash
      uses: actions/upload-artifact@v1
