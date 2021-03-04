@@ -20,7 +20,6 @@ jobs:
      id: build
      uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@master
      with:
-       project-src-path: 'cifuzz-external-example'
        build-integration-path: 'fuzzer-build-integration'
        oss-fuzz-project-name: 'cifuzz-external-example'
        dry-run: false
