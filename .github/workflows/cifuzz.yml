@@ -6,42 +6,35 @@ on:
   push:
     branches:
       - master
-# jobs:
-#  Fuzzing:
-#    runs-on: ubuntu-latest
-#    steps:
-#    - name: echo env vars
-#      run: echo "GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_BASE_REF $GITHUB_BASE_REF GITHUB_REF $GITHUB_REF GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_ACTION_REF $GITHUB_ACTION_REF GITHUB_SHA $GITHUB_SHA"
-#    - name: Build Fuzzers
-#      id: build
-#      uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-artifacts
-#      with:
-#        build-integration-path: 'fuzzer-build-integration'
-#        oss-fuzz-project-name: 'cifuzz-external-example'
-#    - name: Run Fuzzers
-#      id: run
-#      uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-artifacts
-#      with:
-#        oss-fuzz-project-name: 'external-project'
-#        fuzz-seconds: 600
-#    - name: Upload Crash
-#      uses: actions/upload-artifact@v1
-#      if: failure() && steps.build.outcome == 'success'
-#      with:
-#        name: artifacts
-#        path: ./out/artifacts
+jobs:
+ # Fuzzing:
+ #   runs-on: ubuntu-latest
+ #   steps:
+ #   - name: echo env vars
+ #     run: echo "GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_BASE_REF $GITHUB_BASE_REF GITHUB_REF $GITHUB_REF GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_ACTION_REF $GITHUB_ACTION_REF GITHUB_SHA $GITHUB_SHA"
+ #   - name: Build Fuzzers
+ #     id: build
+ #     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-artifacts
+ #     with:
+ #       build-integration-path: 'fuzzer-build-integration'
+ #       oss-fuzz-project-name: 'cifuzz-external-example'
+ #   - name: Run Fuzzers
+ #     id: run
+ #     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-artifacts
+ #     with:
+ #       oss-fuzz-project-name: 'external-project'
+ #       fuzz-seconds: 600
+ #   - name: Upload Crash
+ #     uses: actions/upload-artifact@v1
+ #     if: failure() && steps.build.outcome == 'success'
+ #     with:
+ #       name: artifacts
+ #       path: ./out/artifacts
 
 
  BatchFuzzing:
    runs-on: ubuntu-latest
    steps:
-   - name: Download workflow artifact
-     uses: dawidd6/action-download-artifact@v2.11.1
-     with:
-       github_token: ${{secrets.GITHUB_TOKEN}}
-       run_id: 610783218
-       workflow: cifuzz.yml
-       path: /tmp/old-artifact
    - name: echo env vars
      run: echo "GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_BASE_REF $GITHUB_BASE_REF GITHUB_REF $GITHUB_REF GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_ACTION_REF $GITHUB_ACTION_REF GITHUB_SHA $GITHUB_SHA GITHUB_RUN_ID $GITHUB_RUN_ID" && ls /tmp/old-artifact
    - name: Build Fuzzers
@@ -60,3 +53,9 @@ on:
        fuzz-seconds: 600
        github-token: ${{ secrets.GITHUB_TOKEN }}
        run-fuzzers-mode: 'batch'
+   - name: Upload Crash
+     uses: actions/upload-artifact@v1
+     if: failure() && steps.build.outcome == 'success'
+     with:
+       name: artifacts
+       path: ./out/artifacts
