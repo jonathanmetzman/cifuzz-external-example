@@ -53,9 +53,3 @@ jobs:
        fuzz-seconds: 600
        github-token: ${{ secrets.GITHUB_TOKEN }}
        run-fuzzers-mode: 'batch'
-   - name: Upload Crash
-     uses: actions/upload-artifact@v1
-     if: failure() && steps.build.outcome == 'success'
-     with:
-       name: artifacts
-       path: ./out/artifacts
