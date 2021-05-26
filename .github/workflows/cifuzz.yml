@@ -16,7 +16,7 @@ jobs:
         $GITHUB_ACTION_REF GITHUB_SHA $GITHUB_SHA"
     - id: build
       name: Build Fuzzers (${{ matrix.sanitizer }})
-      uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@docker-registry
+      uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-artifacts-skeleton
       with:
         allowed_broken_targets_percentage: 100
         dry-run: false
@@ -24,7 +24,7 @@ jobs:
         sanitizer: ${{ matrix.sanitizer }}
     - id: run
       name: Run Fuzzers (${{ matrix.sanitizer }})
-      uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@docker-registry
+      uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-artifacts-skeleton
       with:
         dry-run: false
         fuzz-seconds: 600
@@ -43,22 +43,3 @@ jobs:
         - address
         - undefined
         - memory
-
-  # BatchFuzzing:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - id: build
-  #     name: Build Fuzzers
-  #     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-artifacts
-  #     with:
-  #       build-integration-path: fuzzer-build-integration
-  #       oss-fuzz-project-name: cifuzz-external-example
-  #   - id: run
-  #     name: Run Fuzzers
-  #     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-artifacts
-  #     with:
-  #       build-integration-path: fuzzer-build-integration
-  #       fuzz-seconds: 600
-  #       github-token: ${{ secrets.GITHUB_TOKEN }}
-  #       oss-fuzz-project-name: cifuzz-external-example
-  #       run-fuzzers-mode: batch
