@@ -14,13 +14,13 @@ jobs:
      run: echo "GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_BASE_REF $GITHUB_BASE_REF GITHUB_REF $GITHUB_REF GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_ACTION_REF $GITHUB_ACTION_REF GITHUB_SHA $GITHUB_SHA"
    - name: Build Fuzzers
      id: build
-     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-coverage
+     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-fuzz_target
      with:
        build-integration-path: 'fuzzer-build-integration'
        oss-fuzz-project-name: 'cifuzz-external-example'
    - name: Run Fuzzers
      id: run
-     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-coverage
+     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-fuzz_target
      with:
        oss-fuzz-project-name: 'external-project'
        fuzz-seconds: 600
@@ -39,13 +39,13 @@ jobs:
  #     run: echo "GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_BASE_REF $GITHUB_BASE_REF GITHUB_REF $GITHUB_REF GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_ACTION_REF $GITHUB_ACTION_REF GITHUB_SHA $GITHUB_SHA GITHUB_RUN_ID $GITHUB_RUN_ID"
  #   - name: Build Fuzzers
  #     id: build
- #     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-coverage
+ #     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-fuzz_target
  #     with:
  #       build-integration-path: 'fuzzer-build-integration'
  #       oss-fuzz-project-name: 'cifuzz-external-example'
  #   - name: Run Fuzzers
  #     id: run
- #     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-coverage
+ #     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-fuzz_target
  #     with:
  #       oss-fuzz-project-name: 'cifuzz-external-example'
  #       build-integration-path: 'fuzzer-build-integration'
