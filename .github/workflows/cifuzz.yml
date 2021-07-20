@@ -27,6 +27,7 @@ jobs:
      id: run
      uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-coverage-report
      with:
+       build-integration-path: 'fuzzer-build-integration'
        sanitizer: ${{ matrix.sanitizer }}
        oss-fuzz-project-name: 'external-project'
        fuzz-seconds: 600
