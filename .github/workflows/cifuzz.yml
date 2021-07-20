@@ -9,6 +9,10 @@ on:
 jobs:
  Fuzzing:
    runs-on: ubuntu-latest
+   strategy:
+     fail-fast: false
+     matrix:
+       sanitizer: [address, coverage]
    steps:
    - name: echo env vars
      run: echo "GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_BASE_REF $GITHUB_BASE_REF GITHUB_REF $GITHUB_REF GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_ACTION_REF $GITHUB_ACTION_REF GITHUB_SHA $GITHUB_SHA"
@@ -24,12 +28,6 @@ jobs:
      with:
        oss-fuzz-project-name: 'external-project'
        fuzz-seconds: 600
-   - name: Upload Crash
-     uses: actions/upload-artifact@v1
-     if: failure() && steps.build.outcome == 'success'
-     with:
-       name: artifacts
-       path: ./out/artifacts
 
 
  BatchFuzzing:
