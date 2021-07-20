@@ -22,10 +22,12 @@ jobs:
      with:
        build-integration-path: 'fuzzer-build-integration'
        oss-fuzz-project-name: 'cifuzz-external-example'
+       sanitizer: ${{ matrix.sanitizer }}
    - name: Run Fuzzers
      id: run
      uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-coverage-report
      with:
+       sanitizer: ${{ matrix.sanitizer }}
        oss-fuzz-project-name: 'external-project'
        fuzz-seconds: 600
 
