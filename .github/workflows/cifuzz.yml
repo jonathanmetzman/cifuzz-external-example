@@ -23,6 +23,7 @@ jobs:
        build-integration-path: 'fuzzer-build-integration'
        oss-fuzz-project-name: ''
        sanitizer: ${{ matrix.sanitizer }}
+       github-token: ${{ secrets.GITHUB_TOKEN }}
    - name: Run Fuzzers
      id: run
      uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-fix3
