@@ -29,7 +29,7 @@ jobs:
      with:
        build-integration-path: 'fuzzer-build-integration'
        sanitizer: ${{ matrix.sanitizer }}
-       oss-fuzz-project-name: 'external-project'
+       oss-fuzz-project-name: ''
        fuzz-seconds: 600
 
 
