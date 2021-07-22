@@ -18,14 +18,14 @@ jobs:
      run: echo "GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_BASE_REF $GITHUB_BASE_REF GITHUB_REF $GITHUB_REF GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_ACTION_REF $GITHUB_ACTION_REF GITHUB_SHA $GITHUB_SHA"
    - name: Build Fuzzers
      id: build
-     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-fmt
+     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-logging
      with:
        build-integration-path: 'fuzzer-build-integration'
        oss-fuzz-project-name: ''
        sanitizer: ${{ matrix.sanitizer }}
    - name: Run Fuzzers
      id: run
-     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-fmt
+     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-logging
      with:
        build-integration-path: 'fuzzer-build-integration'
        sanitizer: ${{ matrix.sanitizer }}
@@ -41,13 +41,13 @@ jobs:
      run: echo "GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_BASE_REF $GITHUB_BASE_REF GITHUB_REF $GITHUB_REF GITHUB_HEAD_REF $GITHUB_HEAD_REF GITHUB_ACTION_REF $GITHUB_ACTION_REF GITHUB_SHA $GITHUB_SHA GITHUB_RUN_ID $GITHUB_RUN_ID"
    - name: Build Fuzzers
      id: build
-     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-fmt
+     uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@cifuzz-logging
      with:
        build-integration-path: 'fuzzer-build-integration'
        oss-fuzz-project-name: ''
    - name: Run Fuzzers
      id: run
-     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-fmt
+     uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@cifuzz-logging
      with:
        oss-fuzz-project-name: ''
        build-integration-path: 'fuzzer-build-integration'
