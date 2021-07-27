@@ -1,4 +1,4 @@
-\name: CIFuzz
+name: CIFuzz
 on:
   pull_request:
     paths:
