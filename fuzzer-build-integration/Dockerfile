@@ -16,6 +16,6 @@
 
 FROM gcr.io/oss-fuzz-base/base-builder
 
-COPY . $SRC/external-project
-WORKDIR external-project
+COPY . $SRC/cifuzz-external-example
+WORKDIR cifuzz-external-example
 COPY fuzzer-build-integration/build.sh $SRC/
