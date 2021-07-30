@@ -35,7 +35,7 @@ jobs:
        github-token: ${{ secrets.GITHUB_TOKEN }}
 
 
-Prune:
+ Prune:
    runs-on: ubuntu-latest
    steps:
    - name: echo env vars
