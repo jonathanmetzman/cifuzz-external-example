@@ -20,10 +20,10 @@ jobs:
      id: build
      uses: google/oss-fuzz/infra/cifuzz/external-actions/build_fuzzers@master
      with:
-       build-integration-path: 'fuzzer-build-integration'
        oss-fuzz-project-name: ''
        sanitizer: ${{ matrix.sanitizer }}
        github-token: ${{ secrets.GITHUB_TOKEN }}
+       upload-build: true
    - name: Run Fuzzers
      id: run
      uses: google/oss-fuzz/infra/cifuzz/external-actions/run_fuzzers@master
