@@ -1,3 +1,24 @@
 steps:
+  - name: gcr.io/cloud-builders/git
+    entrypoint: /bin/bash
+    args:
+      - -exc
+      - |
+        # Cloud Build x GitHub integration uses source archives to fetch
+        # the source, rather than Git source fetching, and as a consequence
+        # does not include the .git/ directory. As a workaround, we clone
+        # the repository to grab the .git directory.
+        git clone 'https://github.com/google/clusterfuzz' tmp
+        git -C tmp fetch origin "$COMMIT_SHA"
+        git -C tmp checkout -qf FETCH_HEAD
+        mv tmp/.git .git
+        rm -rf tmp
+        echo $$PWD
   - name: gcr.io/cloud-builders/docker
-    args: ['run', '-e', 'LANGUAGE=c++', 'gcr.io/oss-fuzz-base/cifuzz-build-fuzzers:v1']
+    args:
+      - 'run'
+      - '-e'
+      - 'LANGUAGE=c++'
+      - '-e'
+      - 'WORKSPACE=/workspace'
+      - 'gcr.io/oss-fuzz-base/cifuzz-build-fuzzers:v1'
