@@ -6,7 +6,7 @@ steps:
       - 'PROJECT_SRC_PATH=/workspace'
       - 'REPOSITORY=cifuzz-external-example'
       - 'FILESTORE=gsutil'
-      - 'CLOUD_BUCKET=gs://metzman-test/'
+      - 'CLOUD_BUCKET=gs://cifuzz/'
       - 'UPLOAD_BUILD=True'
 
   - name: gcr.io/oss-fuzz-base/cifuzz-run-fuzzers:v1
@@ -16,4 +16,4 @@ steps:
       - 'PROJECT_SRC_PATH=/workspace'
       - 'REPOSITORY=cifuzz-external-example'
       - 'FILESTORE=gsutil'
-      - 'CLOUD_BUCKET=gs://metzman-test/'
+      - 'CLOUD_BUCKET=gs://cifuzz/'
