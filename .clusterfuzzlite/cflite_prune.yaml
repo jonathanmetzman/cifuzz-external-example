@@ -1,0 +1,19 @@
+steps:
+  - name: gcr.io/oss-fuzz-base/cifuzz-build-fuzzers:v1
+    env:
+      - 'CLOUD_BUCKET=gs://cifuzz/'
+      - 'REPOSITORY=cifuzz-external-example'
+      - 'LANGUAGE=c++'
+      - 'WORKSPACE=/builder/home'
+      - 'PROJECT_SRC_PATH=/workspace'
+      - 'FILESTORE=gsutil'
+
+  - name: gcr.io/oss-fuzz-base/cifuzz-run-fuzzers:v1
+    env:
+      - 'CLOUD_BUCKET=gs://cifuzz/'
+      - 'REPOSITORY=cifuzz-external-example'
+      - 'LANGUAGE=c++'
+      - 'WORKSPACE=/builder/home'
+      - 'PROJECT_SRC_PATH=/workspace'
+      - 'FILESTORE=gsutil'
+      - 'MODE=prune'
