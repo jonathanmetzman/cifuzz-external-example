@@ -30,9 +30,3 @@ jobs:
        oss-fuzz-project-name: 'external-project'
        fuzz-seconds: 600
        dry-run: false
-   - name: Upload Crash
-     uses: actions/upload-artifact@v1
-     if: failure() && steps.build.outcome == 'success'
-     with:
-       name: artifacts
-       path: ./out/artifacts
