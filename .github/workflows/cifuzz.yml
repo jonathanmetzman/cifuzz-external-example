@@ -23,7 +23,6 @@ jobs:
        oss-fuzz-project-name: ''
        sanitizer: ${{ matrix.sanitizer }}
        github-token: ${{ secrets.GITHUB_TOKEN }}
-       upload-build: true
    - name: Run Fuzzers
      id: run
      uses: google/oss-fuzz/infra/cifuzz/external-actions/run_fuzzers@fix-latest-build
