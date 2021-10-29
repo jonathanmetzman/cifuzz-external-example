@@ -2,7 +2,7 @@ steps:
   - name: gcr.io/oss-fuzz-base/cifuzz-build-fuzzers:v1
     env:
       - 'CLOUD_BUCKET=gs://cifuzz/'
-      - 'PROJECT_NAME=cifuzz-external-example'
+      - 'REPOSITORY=cifuzz-external-example'
       - 'LANGUAGE=c++'
       - 'UPLOAD_BUILD=True'
       - 'WORKSPACE=/builder/home'
