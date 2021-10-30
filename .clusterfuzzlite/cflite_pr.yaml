@@ -7,7 +7,7 @@ steps:
       - 'WORKSPACE=/builder/home'
       - 'PROJECT_SRC_PATH=/workspace'
       - 'FILESTORE=gsutil'
-      - 'KEEP_UNAFFECTED_FUZZERS=False'
+      - 'GIT_BASE_REF=$_BASE_BRANCH'
 
   - name: gcr.io/oss-fuzz-base/cifuzz-run-fuzzers:v1
     env:
