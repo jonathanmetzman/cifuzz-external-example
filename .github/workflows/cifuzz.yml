@@ -27,7 +27,6 @@ jobs:
      id: run
      uses: google/oss-fuzz/infra/cifuzz/external-actions/run_fuzzers@cifuzz-fix-fix-latest-build
      with:
-       build-integration-path: 'fuzzer-build-integration'
        sanitizer: ${{ matrix.sanitizer }}
        oss-fuzz-project-name: ''
        fuzz-seconds: 600
@@ -43,9 +42,9 @@ jobs:
      id: build
      uses: google/oss-fuzz/infra/cifuzz/external-actions/build_fuzzers@cifuzz-fix-fix-latest-build
      with:
-       build-integration-path: 'fuzzer-build-integration'
        oss-fuzz-project-name: ''
        github-token: ${{ secrets.GITHUB_TOKEN }}
+       upload-build: true
    - name: Run Fuzzers
      id: run
      uses: google/oss-fuzz/infra/cifuzz/external-actions/run_fuzzers@cifuzz-fix-fix-latest-build
