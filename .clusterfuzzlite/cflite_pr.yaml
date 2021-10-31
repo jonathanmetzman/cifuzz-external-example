@@ -1,5 +1,5 @@
 steps:
-  - name: gcr.io/oss-fuzz-base/cifuzz-build-fuzzers:v1
+  - name: gcr.io/oss-fuzz-base/clusterfuzzlite-build-fuzzers-test:v1
     env:
       - 'CLOUD_BUCKET=gs://cifuzz/'
       - 'REPOSITORY=cifuzz-external-example'
@@ -9,7 +9,7 @@ steps:
       - 'FILESTORE=gsutil'
       - 'GIT_BASE_REF=$_BASE_BRANCH'
 
-  - name: gcr.io/oss-fuzz-base/cifuzz-run-fuzzers:v1
+  - name: gcr.io/oss-fuzz-base/clusterfuzzlite-run-fuzzers-test:v1
     env:
       - 'CLOUD_BUCKET=gs://cifuzz/'
       - 'REPOSITORY=cifuzz-external-example'
