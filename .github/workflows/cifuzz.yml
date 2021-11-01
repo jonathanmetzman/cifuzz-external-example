@@ -20,16 +20,13 @@ jobs:
      id: build
      uses: google/oss-fuzz/infra/cifuzz/external-actions/build_fuzzers@cifuzz-ci-env3
      with:
-       oss-fuzz-project-name: ''
        sanitizer: ${{ matrix.sanitizer }}
        github-token: ${{ secrets.GITHUB_TOKEN }}
-       upload-build: true
    - name: Run Fuzzers
      id: run
      uses: google/oss-fuzz/infra/cifuzz/external-actions/run_fuzzers@cifuzz-ci-env3
      with:
        sanitizer: ${{ matrix.sanitizer }}
-       oss-fuzz-project-name: ''
        fuzz-seconds: 600
        github-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -43,14 +40,11 @@ jobs:
      id: build
      uses: google/oss-fuzz/infra/cifuzz/external-actions/build_fuzzers@cifuzz-ci-env3
      with:
-       oss-fuzz-project-name: ''
        github-token: ${{ secrets.GITHUB_TOKEN }}
    - name: Run Fuzzers
      id: run
      uses: google/oss-fuzz/infra/cifuzz/external-actions/run_fuzzers@cifuzz-ci-env3
      with:
-       oss-fuzz-project-name: ''
-       build-integration-path: 'fuzzer-build-integration'
        fuzz-seconds: 600
        github-token: ${{ secrets.GITHUB_TOKEN }}
        run-fuzzers-mode: 'prune'
