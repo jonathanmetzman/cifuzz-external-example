@@ -29,6 +29,8 @@ jobs:
        sanitizer: ${{ matrix.sanitizer }}
        fuzz-seconds: 600
        github-token: ${{ secrets.GITHUB_TOKEN }}
+       report-unreproducible-crashes: True
+       minimize-crashes: True
 
 
  Prune:
