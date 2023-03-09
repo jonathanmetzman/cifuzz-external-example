@@ -48,7 +48,7 @@ jobs:
        github-token: ${{ secrets.GITHUB_TOKEN }}
        run-fuzzers-mode: 'prune'
 
- Prune:
+ Batch:
    runs-on: ubuntu-latest
    steps:
    - name: Build Fuzzers
