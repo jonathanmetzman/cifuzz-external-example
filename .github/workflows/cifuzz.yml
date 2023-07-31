@@ -17,19 +17,20 @@ jobs:
    steps:
    - name: Build Fuzzers
      id: build
-     uses: google/oss-fuzz/infra/cifuzz/external-actions/build_fuzzers@sarif-fix
+     uses: google/oss-fuzz/infra/cifuzz/external-actions/build_fuzzers@master
      with:
        sanitizer: ${{ matrix.sanitizer }}
        github-token: ${{ secrets.GITHUB_TOKEN }}
    - name: Run Fuzzers
      id: run
-     uses: google/oss-fuzz/infra/cifuzz/external-actions/run_fuzzers@sarif-fix
+     uses: google/oss-fuzz/infra/cifuzz/external-actions/run_fuzzers@master
      with:
        sanitizer: ${{ matrix.sanitizer }}
        fuzz-seconds: 600
        github-token: ${{ secrets.GITHUB_TOKEN }}
        report-unreproducible-crashes: True
        minimize-crashes: True
+       output-sarif: true
 
 
  Prune:
@@ -37,29 +38,31 @@ jobs:
    steps:
    - name: Build Fuzzers
      id: build
-     uses: google/oss-fuzz/infra/cifuzz/external-actions/build_fuzzers@sarif-fix
+     uses: google/oss-fuzz/infra/cifuzz/external-actions/build_fuzzers@master
      with:
        github-token: ${{ secrets.GITHUB_TOKEN }}
    - name: Run Fuzzers
      id: run
-     uses: google/oss-fuzz/infra/cifuzz/external-actions/run_fuzzers@sarif-fix
+     uses: google/oss-fuzz/infra/cifuzz/external-actions/run_fuzzers@master
      with:
        fuzz-seconds: 600
        github-token: ${{ secrets.GITHUB_TOKEN }}
        run-fuzzers-mode: 'prune'
+       output-sarif: true
 
  Batch:
    runs-on: ubuntu-latest
    steps:
    - name: Build Fuzzers
      id: build
-     uses: google/oss-fuzz/infra/cifuzz/external-actions/build_fuzzers@sarif-fix
+     uses: google/oss-fuzz/infra/cifuzz/external-actions/build_fuzzers@master
      with:
        github-token: ${{ secrets.GITHUB_TOKEN }}
    - name: Run Fuzzers
      id: run
-     uses: google/oss-fuzz/infra/cifuzz/external-actions/run_fuzzers@sarif-fix
+     uses: google/oss-fuzz/infra/cifuzz/external-actions/run_fuzzers@master
      with:
        fuzz-seconds: 600
        github-token: ${{ secrets.GITHUB_TOKEN }}
        run-fuzzers-mode: 'batch'
+       output-sarif: true
