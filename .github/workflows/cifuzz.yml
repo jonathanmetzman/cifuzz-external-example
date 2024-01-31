@@ -17,13 +17,13 @@ jobs:
    steps:
    - name: Build Fuzzers
      id: build
-     uses: google/oss-fuzz/infra/cifuzz/external-actions/build_fuzzers@master
+     uses: google/oss-fuzz/infra/cifuzz/external-actions/build_fuzzers@github-server
      with:
        sanitizer: ${{ matrix.sanitizer }}
        github-token: ${{ secrets.GITHUB_TOKEN }}
    - name: Run Fuzzers
      id: run
-     uses: google/oss-fuzz/infra/cifuzz/external-actions/run_fuzzers@master
+     uses: google/oss-fuzz/infra/cifuzz/external-actions/run_fuzzers@github-server
      with:
        sanitizer: ${{ matrix.sanitizer }}
        fuzz-seconds: 600
@@ -38,12 +38,12 @@ jobs:
    steps:
    - name: Build Fuzzers
      id: build
-     uses: google/oss-fuzz/infra/cifuzz/external-actions/build_fuzzers@master
+     uses: google/oss-fuzz/infra/cifuzz/external-actions/build_fuzzers@github-server
      with:
        github-token: ${{ secrets.GITHUB_TOKEN }}
    - name: Run Fuzzers
      id: run
-     uses: google/oss-fuzz/infra/cifuzz/external-actions/run_fuzzers@master
+     uses: google/oss-fuzz/infra/cifuzz/external-actions/run_fuzzers@github-server
      with:
        fuzz-seconds: 600
        github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -55,12 +55,12 @@ jobs:
    steps:
    - name: Build Fuzzers
      id: build
-     uses: google/oss-fuzz/infra/cifuzz/external-actions/build_fuzzers@master
+     uses: google/oss-fuzz/infra/cifuzz/external-actions/build_fuzzers@github-server
      with:
        github-token: ${{ secrets.GITHUB_TOKEN }}
    - name: Run Fuzzers
      id: run
-     uses: google/oss-fuzz/infra/cifuzz/external-actions/run_fuzzers@master
+     uses: google/oss-fuzz/infra/cifuzz/external-actions/run_fuzzers@github-server
      with:
        fuzz-seconds: 600
        github-token: ${{ secrets.GITHUB_TOKEN }}
