@@ -13,7 +13,7 @@ jobs:
    strategy:
      fail-fast: false
      matrix:
-       sanitizer: [address, coverage]
+       sanitizer: [address, memory, coverage]
    steps:
    - name: Build Fuzzers
      id: build
