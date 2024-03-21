@@ -1,0 +1,20 @@
+steps:
+  - name: gcr.io/oss-fuzz-base/clusterfuzzlite-build-fuzzers-test:v1
+    env:
+      - 'CLOUD_BUCKET=gs://cifuzz/'
+      - 'REPOSITORY=cifuzz-external-example'
+      - 'LANGUAGE=c++'
+      - 'WORKSPACE=/builder/home'
+      - 'PROJECT_SRC_PATH=/workspace'
+      - 'FILESTORE=gsutil'
+      - 'GIT_BASE_REF=$_BASE_BRANCH'
+
+  - name: gcr.io/oss-fuzz-base/clusterfuzzlite-run-fuzzers-test:v1
+    env:
+      - 'CLOUD_BUCKET=gs://cifuzz/'
+      - 'REPOSITORY=cifuzz-external-example'
+      - 'LANGUAGE=c++'
+      - 'WORKSPACE=/builder/home'
+      - 'PROJECT_SRC_PATH=/workspace'
+      - 'FILESTORE=gsutil'
+      - 'MODE=code-change'
